@@ -6,6 +6,7 @@ import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { OrderComponent } from './orders/orders.component';
 import { ProductComponent } from './product/product.component';
+import { OrderProfileComponent } from './orders/order-profile/order-profile.component';
 
 export const EcomRoutes: Routes = [
   {
@@ -58,6 +59,17 @@ export const EcomRoutes: Routes = [
         data: {
           title: 'Orders',
           urls: [{ title: 'Dashboard', url: '/dashboard' }, { title: 'Orders' }]
+        }
+      },
+      {
+        path: 'orderprofile/:id',
+        component: OrderProfileComponent,
+        data: {
+          title: 'Order Details',
+          urls: [
+            { title: 'Dashboard', url: '/dashboard' },
+            { title: 'Order Details' }
+          ]
         }
       },
       {

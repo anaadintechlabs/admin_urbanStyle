@@ -63,5 +63,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     JwtServiceService
   ],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

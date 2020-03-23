@@ -14,8 +14,8 @@ import { Observable, throwError } from "rxjs";
   providedIn: "root"
 })
 export class ApiService {
-  //  userUrl='http://localhost:8081/urban/';
-  userUrl='https://user2.cfapps.io/urban/';
+   userUrl='http://localhost:8081/urban/';
+  // userUrl='https://user2.cfapps.io/urban/';
   orderUrl = "https://myorder.cfapps.io/"
   constructor(
     private http: HttpClient,
@@ -46,13 +46,23 @@ export class ApiService {
       .pipe(catchError(this.formatErrors));
   }
 
-  post(path: string, body: Object = {}, param?:Object): Observable<any> {
+  post(path: string, body: Object = {},  params: HttpParams = new HttpParams()): Observable<any> {
     console.log("path..." + environment.api_url + path);
     console.log("body..." , body);
+    console.log("params...", params);
     return this.http
-      .post(`${environment.api_url}${path}`, body , param)
+      .post(`${environment.api_url}${path}`, body , {params})
       .pipe(catchError(this.formatErrors));
   }
+
+  // post(path: string, body: Object = {}, param?:Object): Observable<any> {
+  //   console.log("path..." + environment.api_url + path);
+  //   console.log("body..." , body);
+  //   console.log("params...", param);
+  //   return this.http
+  //     .post(`${environment.api_url}${path}`, body , {param})
+  //     .pipe(catchError(this.formatErrors));
+  // }
 
   postOrder(path: string, body: Object = {}, param?:Object): Observable<any> {
     console.log("path..." + environment.api_url + path);
@@ -62,9 +72,9 @@ export class ApiService {
       .pipe(catchError(this.formatErrors));
   }
 
-  postUser(path: string, body: Object = {}): Observable<any> {
+  postUser(path: string, body: Object = {}, params: HttpParams = new HttpParams()): Observable<any> {
     console.log("body",this.userUrl+path)
-    return this.http.post(`${this.userUrl}${path}`, body)
+    return this.http.post(`${this.userUrl}${path}`, body, {params})
       .pipe(catchError(this.formatErrors));
   }
 
@@ -95,5 +105,7 @@ export class ApiService {
       .delete(this.userUrl + path)
       .pipe(catchError(this.formatErrors));
   }
+
+  
 
 }
