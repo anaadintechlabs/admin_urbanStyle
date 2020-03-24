@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OrdersService } from '../service/orders.service';
 
 @Component({
@@ -11,8 +11,11 @@ export class OrderProfileComponent implements OnInit {
   public orderId: any;
   public subscription: any;
   public orderData: any;
+  params ={};
 
-  constructor(private route: ActivatedRoute, private orderService: OrdersService) { }
+  constructor(private route: ActivatedRoute,
+     private orderService: OrdersService,
+     private router: Router) { }
 
   ngOnInit() {
     this.subscription = this.route.url.subscribe(
@@ -24,12 +27,29 @@ export class OrderProfileComponent implements OnInit {
           res => {
             this.orderData = res.data.orderDetails;
             console.log(this.orderData);
+            this.params = {
+              orderId: Number(this.orderData.id),
+              orderProdId: this.orderData.product.product.productId,
+              status: this.orderData.status,
+              userId: this.orderData.userOrder.user.id
+            }
           }, error => {
             console.log(error);
           }
         )
       }
     );
+  }
+
+  closeOrder() {
+    let url = 'api/setStatusbyAdmin';
+    this.orderService.setStatusbyAdmin(url, this.params).subscribe(
+      data => {
+        this.router.navigateByUrl('/ecom/orders');
+      }, error => {
+        console.log(error);
+      }
+    )
   }
 
 }

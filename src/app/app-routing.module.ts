@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FullComponent } from './layouts/full/full.component';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { AuthGuardService } from '_service/http_&_login/authGuard.service';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 export const Approutes: Routes = [
   {
@@ -21,6 +22,14 @@ export const Approutes: Routes = [
         loadChildren : './user/user-dashboard/user-dashboard.module#UserDashboardModule',
       },
       {
+        path : 'sales',
+        loadChildren : './sales/sales.module#SalesModule',
+      },
+      {
+        path : 'returns',
+        loadChildren : './returns/returns.module#ReturnsModule',
+      },
+      {
         path : 'affiliate',
         loadChildren : './affiliate/affiliate-dashboard/affiliate-dashboard.module#AffiliateDashboardModule',
       },
@@ -31,6 +40,10 @@ export const Approutes: Routes = [
       {
         path: 'starter',
         loadChildren: './starter/starter.module#StarterModule'
+      },
+      {
+        path: 'profile',
+        component: EditProfileComponent
       },
       {
         path: 'component',

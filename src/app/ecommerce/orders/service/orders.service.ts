@@ -22,6 +22,14 @@ export class OrdersService {
       this.apiService.get(path, param).subscribe(data => {
         obs.next(data);
       })
-    })
+    });
+  }
+
+  setStatusbyAdmin(path, params): Observable<any> {
+    return new Observable<any> (obs => {
+      this.apiService.get(path, params).subscribe(data => {
+        obs.next(data);
+      })
+    });
   }
 }
