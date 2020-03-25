@@ -24,6 +24,7 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { JwtServiceService } from '_service/http_&_login/jwt-service.service';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -41,13 +42,14 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NavigationComponent,
     BreadcrumbComponent,
     SidebarComponent,
+    EditProfileComponent,
   ],
   imports: [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-	ReactiveFormsModule,
+	  ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
     NgbModule,
@@ -63,5 +65,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     JwtServiceService
   ],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

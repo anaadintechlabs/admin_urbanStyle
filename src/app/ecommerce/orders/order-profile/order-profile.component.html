@@ -1,0 +1,116 @@
+<div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Product Info</h3>
+      <hr>
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="white-box text-center">
+                
+                <img [src]="orderData?.product?.mainImageUrl" alt="Product image" class="img-responsive"> 
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-6">
+            <h4 class="box-title m-t-40">{{orderData?.product?.product?.productName}}</h4>
+            <p>{{orderData?.product?.product?.longDescription}}</p>
+
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <th>Brand Name</th>
+                        <td>{{orderData?.product?.product?.brandName}}</td>
+                        <th>Features</th>
+                        <td>{{orderData?.product?.features}}</td>
+                    </tr>
+                    <tr>
+                        <th>Default Size</th>
+                        <td>{{orderData?.product?.product?.defaultSize}}</td>
+                        <th>Default Color</th>
+                        <td>{{orderData?.product?.product?.defaultColor}}</td>
+                    </tr>
+                    <tr>
+                        <th>Display Price</th>
+                        <td>{{orderData?.product?.displayPrice}}</td>
+                        <th>Sale Price</th>
+                        <td>{{orderData?.product?.salesPrice}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+      </div>
+      <h3 class="card-title">Customer Info</h3>
+      <hr>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="white-box text-center">
+                
+                <img [src]="orderData?.userOrder?.user?.imageUrl" alt="Customer image" class="img-responsive"> 
+            </div>
+        </div> 
+        <div class="col-lg-8 col-md-8 col-sm-6">
+            <h4 class="box-title m-t-40">{{orderData?.userOrder?.user?.name}}</h4>
+            <p style="margin-bottom: 10px;">{{orderData?.userOrder?.address?.addressOne}}</p>
+            <p>{{orderData?.userOrder?.address?.addressTwo}}</p>
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <!-- <th>Brand Name</th> -->
+                        <th>{{orderData?.userOrder?.address?.cite?.cityName}}</th>
+                        <!-- <th>Features</th> -->
+                        <th>{{orderData?.userOrder?.address?.zip}}</th>
+                    </tr>
+                    <tr>
+                        <!-- <th>Default Size</th> -->
+                        <th>{{orderData?.userOrder?.address?.state?.stateName}}</th>
+                        <!-- <th>Default Color</th> -->
+                        <th>{{orderData?.userOrder?.address?.country?.countryName}}</th>
+                    </tr>
+                    <tr>
+                        <!-- <th>Display Price</th> -->
+                        <th>{{orderData?.userOrder?.user?.email}}</th>
+                        <!-- <th>Sale Price</th> -->
+                        <th>{{orderData?.userOrder?.user?.phoneNumber}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+      <h3 class="card-title">Vendor Info</h3>
+      <hr>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="white-box text-center">
+                
+                <img [src]="orderData?.vendor?.imageUrl" alt="Vendor image" class="img-responsive"> 
+            </div>
+        </div> 
+        <div class="col-lg-8 col-md-8 col-sm-6">
+            <h4 class="box-title m-t-40">{{orderData?.vendor?.name}}</h4>
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <!-- <th>Brand Name</th> -->
+                        <th>{{orderData?.vendor?.userType}}</th>
+                        <!-- <th>Features</th> -->
+                        <th>{{orderData?.vendor?.provider}}</th>
+                    </tr>
+                    <tr>
+                        <!-- <th>Display Price</th> -->
+                        <th>{{orderData?.vendor?.email}}</th>
+                        <!-- <th>Sale Price</th> -->
+                        <th>{{orderData?.vendor?.phoneNumber}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+      </div>
+
+      <div class="row" *ngIf="orderData?.status === 'DISPATCHED'">
+          <div class="col-md-12 col-sm-12 col-lg-12">
+              <button type="button" (click)="closeOrder()" class="btn btn-primary float-right">Close Order</button>
+          </div>
+      </div>
+    </div>
+  </div>

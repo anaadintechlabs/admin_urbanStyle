@@ -12,6 +12,7 @@ import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { OrderComponent } from './orders/orders.component';
 import { ProductComponent } from './product/product.component';
+import { OrderProfileComponent } from './orders/order-profile/order-profile.component';
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(EcomRoutes), FormsModule, NgbModule],
@@ -21,7 +22,8 @@ import { ProductComponent } from './product/product.component';
     DetailsComponent,
     EditComponent,
     OrderComponent,
-    ProductComponent
+    ProductComponent,
+    OrderProfileComponent
   ]
 })
 export class EcomModule {}

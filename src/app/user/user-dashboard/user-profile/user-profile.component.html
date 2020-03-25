@@ -1,0 +1,63 @@
+<div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Customer CartList</h3>
+      <div class="table-responsive">
+        <table class="table v-middle product-overview" id="zero_config">
+            <thead>
+                <tr>
+                    <th>Sr No.</th>
+                    <th>Cart ID</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of cartList; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>CART-{{data.id}}</td>
+                    <td>
+                        <img [src]="data.productVariant?.mainImageUrl" alt="Cart Product pic" width="80"> 
+                    </td>
+                    <td>{{data.productVariant?.product?.productName}}</td>
+                    <td>{{data.productVariant?.product?.brandName}}</td>
+                    <td>{{data.quantity}}</td>
+                    <td>{{data.cost}}</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+    <br>
+      <h3 class="card-title">Customer WishList</h3>
+      <div class="table-responsive">
+        <table class="table v-middle product-overview" id="zero_config">
+            <thead>
+                <tr>
+                    <th>Sr No.</th>
+                    <th>Wish ID</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of wishList; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>WISH-{{data.id}}</td>
+                    <td>
+                        <img [src]="data.productVariant?.mainImageUrl" alt="Wished Product pic" width="80"> </td>
+                    <td>{{data.productVariant?.product?.productName}}</td>
+                    <td>{{data.productVariant?.product?.brandName}}</td>
+                    <td>{{data.productVariant?.displayPrice}}</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+    </div>
+  </div>
