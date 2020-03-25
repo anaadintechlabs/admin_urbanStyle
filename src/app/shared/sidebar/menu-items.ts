@@ -35,6 +35,22 @@ export const ROUTES: RouteInfo[] = [
     submenu: []
   },
   {
+    path: "/sales",
+    title: "Sales",
+    icon: "mdi mdi-adjust",
+    class: "",
+    extralink: false,
+    submenu: []
+  },
+  {
+    path: "/returns",
+    title: "Returns",
+    icon: "mdi mdi-adjust",
+    class: "",
+    extralink: false,
+    submenu: []
+  },
+  {
     path: "/vendor",
     title: "Vendor",
     icon: "mdi mdi-adjust",

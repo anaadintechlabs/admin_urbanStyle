@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from "_service/data/data.service";
+import { Router } from '@angular/router';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: "app-user-dashboard",
@@ -9,16 +11,37 @@ import { DataService } from "_service/data/data.service";
 export class UserDashboardComponent implements OnInit {
   userList= [];
 
-  constructor(private dataService: DataService) {}
+  public request = {
+    limit: 15,
+    offset: 0,
+    sortingDirection: 'desc',
+    sortingField: 'joinDate'
+  };
+
+
+  constructor(
+    private router: Router,
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
-    this.dataService.getAllUserByType("CUSTOMER").subscribe(
+    this.getUserList();
+  }
+
+  getUserList() {
+    let url = 'api/user/getAllUserByUserType';
+    this.userService.getAllUserByUserType(url, this.request, {userType : 'CUSTOMER'}).subscribe(
       data => {
-        this.userList = data;
-      },
-      error => {
-        console.log("somewting went wring");
+        this.userList = data.data.userList;
+        console.log(this.userList);
+      }, error => {
+        console.log(error);
       }
-    );
+    )
+  }
+
+
+  navigateToUserProfile(id) {
+    this.router.navigateByUrl('/user/userprofile/'+ id);
   }
 }

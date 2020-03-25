@@ -1,0 +1,108 @@
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Vender General Info</h3>
+        <hr>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="white-box text-center">
+                    <!-- orderData.product.mainImageUrl -->
+                    <img [src]="vendorData?.vendorInfo?.imageUrl" alt="product image" class="img-responsive"> 
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-6">
+                <h4 class="box-title m-t-30">{{vendorData?.vendorInfo?.name}}</h4>
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <th>{{vendorData?.vendorInfo?.email}}</th>
+                            <!-- <td>orderData.product.product.brandName</td> -->
+                            <th>{{vendorData?.vendorInfo?.phoneNumber}}</th>
+                            <!-- <td></td> -->
+                        </tr>
+                        <tr>
+                            <th>Provider- {{vendorData?.vendorInfo?.provider}}</th>
+                            <!-- <td></td> -->
+                            <th>Join Date- {{vendorData?.vendorInfo?.joinDate | date: 'short'}}</th>
+                            <!-- <td></td> -->
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-lg-6" *ngFor="let add of vendorAddList; let i=index">
+                        <h3>Address {{i+1}}</h3>
+                        <hr>
+                        <h5>{{add.addressOne}}</h5>
+                        <h5>{{add.addressTwo}}</h5>
+                        
+                        <p>{{add.cite?.cityName}}, {{add.zip}} <br>
+                            {{add.state?.stateName}} <br>
+                            {{add.country?.countryName}}
+                        </p>
+                       
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <h3 *ngIf= "vendorProductList" class="card-title">Vender Products</h3>
+        <!-- <hr> -->
+        <table *ngIf= "vendorProductList" class="table v-middle product-overview" id="zero_config">
+            <thead>
+                <tr>
+                    <th>Sr No.</th>
+                    <th>Product Id</th>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Brand Name</th>
+                    <th>Display Price</th>
+                    <th>Sales Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let prod of vendorProductList; let i =index">
+                    <td>{{i+1}}</td>
+                    <td>PROD- {{prod.product?.productId}}</td>
+                    <td>
+                        <img [src]="prod.mainImageUrl" alt="product pic" width="80"> 
+                    </td>
+                    <td>{{prod.product?.productName}}</td>
+                    <td>{{prod.product?.brandName}}</td>
+                    <td>{{prod.displayPrice}}</td>
+                    <td>{{prod.salesPrice}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 *ngIf= "vendorOrderList"class="card-title">Vender Orders</h3>
+        <!-- <hr> -->
+        <table *ngIf= "vendorOrderList" class="table v-middle product-overview" id="zero_config">
+            <thead>
+                <tr>
+                    <th>Sr No.</th>
+                    <th>Order ID</th>
+                    <th>Customer Name</th>
+                    <th>Order Price</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let order of vendorOrderList; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>ORD-{{order.id}}</td>
+                    <td>{{order.userOrder?.user?.name}}</td>
+                    <td>{{order.orderProductPrice}}</td>
+                    <td>{{order.userOrder?.address?.addressOne}}</td>
+                    <td>{{order.userOrder?.address?.cite?.cityName}}</td>
+                    <td>{{order.quantity}}</td>
+                    <td>{{order.status}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+  </div>
