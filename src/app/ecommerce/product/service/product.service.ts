@@ -9,9 +9,9 @@ export class ProductService {
 
   constructor(private apiService: ApiService) { }
 
-  getAllVariantsByStatus(path, param): Observable<any> {
+  getAllVariantsByStatus(path, body,param): Observable<any> {
     return new Observable<any>(obs => {
-      this.apiService.getOrder(path, param).subscribe(data => {
+      this.apiService.postOrder(path,body, param).subscribe(data => {
         obs.next(data);
       }); 
     })

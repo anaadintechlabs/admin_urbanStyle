@@ -28,11 +28,11 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { JwtServiceService } from '_service/http_&_login/jwt-service.service';
-<<<<<<< HEAD
 import { HttpTokenInterceptorService } from "_service/http_&_login/http-token-interceptor.service";
-=======
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
->>>>>>> ef39db0be3ac4a3c950b450925b76bfaa3590a31
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { EcomModule } from './ecommerce/ecom.module';
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -62,8 +62,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ToastrModule.forRoot(),
     NgbModule,
     RouterModule.forRoot(Approutes),
+    NgxPaginationModule,
     PerfectScrollbarModule,
-    AgmCoreModule.forRoot({ apiKey: 'AIzaSyBUb3jDWJQ28vDJhuQZxkC0NXr_zycm8D0' })
+    AgmCoreModule.forRoot({ apiKey: 'AIzaSyBUb3jDWJQ28vDJhuQZxkC0NXr_zycm8D0' }),
+
   ],
   providers: [
     {
