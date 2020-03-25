@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from "_service/data/data.service";
 import { Router } from '@angular/router';
 import { UserService } from '../service/user.service';
 
 @Component({
-  selector: 'app-user-dashboard',
-  templateUrl: './user-dashboard.component.html',
-  styleUrls: ['./user-dashboard.component.css']
+  selector: "app-user-dashboard",
+  templateUrl: "./user-dashboard.component.html",
+  styleUrls: ["./user-dashboard.component.css"]
 })
 export class UserDashboardComponent implements OnInit {
+  userList= [];
 
-  public userList: any[];
   public request = {
     limit: 15,
     offset: 0,
@@ -43,5 +44,4 @@ export class UserDashboardComponent implements OnInit {
   navigateToUserProfile(id) {
     this.router.navigateByUrl('/user/userprofile/'+ id);
   }
-
 }

@@ -27,7 +27,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let data of productList; let i = index">
+                            <tr *ngFor="let data of productList| paginate: { itemsPerPage: limit, currentPage: offset,totalItems: count }; let i = index">
                                 <td>{{i+1}}</td>
                                 <td>PROD-{{data.product?.productId}}</td>
                                 <td>
@@ -67,7 +67,7 @@
                                     </button>
                                 </td>
                             </tr>
-                            
+                            <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
                         </tbody>
                     </table>
                 </div>
