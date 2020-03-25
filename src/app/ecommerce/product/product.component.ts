@@ -7,13 +7,20 @@ export class ProductComponent implements OnInit {
 
   public productList: any[];
   public status: number = 1;
+  public limit=15;
+  public offset=0;
+  public sortingField="createdDate";
+  public sortingDirection="desc";
+
   public request = {
-    "limit":15,
-    "offset":0,
-    "sortingDirection":"desc",
-    "sortingField":"createdDate"
+    "limit":this.limit,
+    "offset":this.offset,
+    "sortingDirection":this.sortingDirection,
+    "sortingField":this.sortingField
   }
 
+
+  public count;
 
   constructor(private productService: ProductService) {
 
@@ -25,11 +32,14 @@ export class ProductComponent implements OnInit {
 
   getAllProducts(status) {
     this.status = status;
-    let url = 'product/getAllVariantsByStatus';
-    this.productService.getAllVariantsByStatus(url, {status: status}).subscribe(
+    let url = 'product/getAllVariantsByStatusWithPagination';
+    console.log(this.request)
+    this.productService.getAllVariantsByStatus(url, this.request,{status: status}).subscribe(
       data => {
         this.productList = data.data.productVariantList;
+        this.count=data.data.count;
         console.log(this.productList);
+        console.log("count is",this.count);
       }, error => {
         console.log(error);
       }
@@ -71,6 +81,13 @@ export class ProductComponent implements OnInit {
           console.log(error);
         }
       )
+  }
+
+  pageChanged(event){
+    console.log("page changes"+event)
+    this.request.offset=event-1;
+    this.offset=event;
+    this.getAllProducts(this.status);
   }
 
 

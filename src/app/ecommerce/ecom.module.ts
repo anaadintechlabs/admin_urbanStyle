@@ -13,9 +13,10 @@ import { EditComponent } from './edit/edit.component';
 import { OrderComponent } from './orders/orders.component';
 import { ProductComponent } from './product/product.component';
 import { OrderProfileComponent } from './orders/order-profile/order-profile.component';
+import { NgxPaginationModule } from '../../../node_modules/ngx-pagination';
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(EcomRoutes), FormsModule, NgbModule],
+  imports: [CommonModule, RouterModule.forChild(EcomRoutes), FormsModule, NgbModule,NgxPaginationModule],
   declarations: [
     CartComponent,
     CheckoutComponent,
