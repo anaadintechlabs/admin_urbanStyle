@@ -1,1 +1,43 @@
-<p>returns-dashboard works!</p>
+<div class="row">
+    <!-- Column -->
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table v-middle product-overview" id="zero_config">
+                        <thead>
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>Return ID</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Reason</th>
+                                <th>Return Date</th>
+                                <th>Status</th>
+                                <th>Order ID</th>
+                                <th>User ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let data of returnsList; let i = index">
+                                <td>{{i+1}}</td>
+                                <td (click)="navigateToReturnProfile(data.returnId)">RET-{{data.returnId}}</td>
+                                <td>
+                                    <img [src]="data.orderProduct?.product?.mainImageUrl" alt="Product pic" width="80"> </td>
+                                <td>{{data.orderProduct?.product?.product?.productName}}</td>
+                                <td>{{data.orderProduct?.orderProductPrice}}</td>
+                                <td>{{data.reason}}</td>
+                                <td>{{data.returnAuthorizeDate}}</td>
+                                <td>{{data.status}}</td>
+                                <td>ORD-{{data.order?.id}}</td>
+                                <td>CUS-{{data.user?.id}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+</div>

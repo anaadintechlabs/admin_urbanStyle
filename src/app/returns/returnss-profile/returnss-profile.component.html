@@ -1,1 +1,122 @@
-<p>returnss-profile works!</p>
+<div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Product Info</h3>
+      <hr>
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="white-box text-center">
+                
+                <img [src]="returnData?.orderProduct?.product?.mainImageUrl" alt="Product image" class="img-responsive"> 
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-6">
+            <h4 class="box-title m-t-40">{{returnData?.orderProduct?.product?.product?.productName}}</h4>
+            <p>{{returnData?.orderProduct?.product?.product?.longDescription}}</p>
+
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <th>Brand Name</th>
+                        <td>{{returnData?.orderProduct?.product?.product?.brandName}}</td>
+                        <th>Reason</th>
+                        <td>{{returnData?.reason}}</td>
+                    </tr>
+                    <tr>
+                        <th>Unit Recieve Date</th>
+                        <td>{{returnData?.unitRecieveDate | date: 'short'}}</td>
+                        <th>Return Date</th>
+                        <td>{{returnData?.returnAuthorizeDate | date: 'short'}}</td>
+                    </tr>
+                    <tr>
+                        <th>Order Price</th>
+                        <td>{{returnData?.orderProduct?.orderProductPrice}}</td>
+                        <th>Quantity</th>
+                        <td>{{returnData?.orderProduct?.quantity}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+      </div>
+      <h3>Customer Info</h3>
+      <hr><hr>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="white-box text-center">
+                
+                <img [src]="returnData?.user?.imageUrl" alt="Customer image" class="img-responsive"> 
+            </div>
+        </div> 
+        <div class="col-lg-8 col-md-8 col-sm-6">
+            <h4 class="box-title m-t-40">{{returnData?.user?.name}}</h4>
+            
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <!-- <th>Brand Name</th> -->
+                        <th>ID-{{returnData?.user?.id}}</th>
+                        <!-- <th>Features</th> -->
+                        <th>Join Date- {{returnData?.user?.joinDate | date: 'short'}}</th>
+                    </tr>
+                    <tr>
+                        <!-- <th>Brand Name</th> -->
+                        <th>{{returnData?.user?.userType}}</th>
+                        <!-- <th>Features</th> -->
+                        <th>{{returnData?.user?.provider}}</th>
+                    </tr>
+                    <tr>
+                        <!-- <th>Display Price</th> -->
+                        <th>{{returnData?.user?.email}}</th>
+                        <!-- <th>Sale Price</th> -->
+                        <th>{{returnData?.user?.phoneNumber}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+      </div>
+      <h3 >Vendor Info</h3>
+      <hr>
+
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="white-box text-center">
+                
+                <img [src]="returnData?.orderProduct?.vendor?.imageUrl" alt="Vendor image" class="img-responsive"> 
+            </div>
+        </div> 
+        <div class="col-lg-8 col-md-8 col-sm-6">
+            <h4 class="box-title m-t-40">{{returnData?.orderProduct?.vendor?.name}}</h4>
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <!-- <th>Brand Name</th> -->
+                        <th>ID-{{returnData?.orderProduct?.vendor?.id}}</th>
+                        <!-- <th>Features</th> -->
+                        <th>Join Date- {{returnData?.orderProduct?.vendor?.joinDate | date: 'short'}}</th>
+                    </tr>
+                    <tr>
+                        <!-- <th>Brand Name</th> -->
+                        <th>{{returnData?.orderProduct?.vendor?.userType}}</th>
+                        <!-- <th>Features</th> -->
+                        <th>{{returnData?.orderProduct?.vendor?.provider}}</th>
+                    </tr>
+                    <tr>
+                        <!-- <th>Display Price</th> -->
+                        <th>{{returnData?.orderProduct?.vendor?.email}}</th>
+                        <!-- <th>Sale Price</th> -->
+                        <th>{{returnData?.orderProduct?.vendor?.phoneNumber}}</th>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div> 
+      </div>
+
+      <div class="row" *ngIf="returnData?.status !== 'RECIEVED'">
+          <div class="col-md-12 col-sm-12 col-lg-12">
+              <button type="button" (click)="recieveReturn()" class="btn btn-primary float-right">Recieve Return</button>
+          </div>
+      </div>
+    </div>
+  </div>

@@ -7,6 +7,7 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { UserService } from '_service/http_&_login/user-service.service';
+import { JwtServiceService } from '_service/http_&_login/jwt-service.service';
 declare var $: any;
 
 @Component({
@@ -21,12 +22,14 @@ export class NavigationComponent implements AfterViewInit {
 
   constructor(
     private modalService: NgbModal,
-    private _userService : UserService
+    private _userService : UserService,
+    private jwtSwervice: JwtServiceService
   ) {
 
   }
   logout() {
     this._userService.logout(); 
+    this.jwtSwervice.destroyToken();
   }
   // This is for Notifications
   notifications: Object[] = [

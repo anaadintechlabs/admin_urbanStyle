@@ -16,7 +16,8 @@ import { Observable, throwError } from "rxjs";
 export class ApiService {
    userUrl='http://localhost:8081/urban/';
   // userUrl='https://user2.cfapps.io/urban/';
-  orderUrl = "https://myorder.cfapps.io/"
+  // orderUrl = "https://myorder.cfapps.io/";
+  orderUrl = 'http://localhost:8082/';
   constructor(
     private http: HttpClient,
     // private jwtService: JwtServiceService,
@@ -40,9 +41,21 @@ export class ApiService {
       .pipe(catchError(this.formatErrors));
   }
 
+  getOrder(path: string, params: HttpParams = new HttpParams()): Observable<any> {
+    return this.http
+      .get(this.orderUrl + path, { params })
+      .pipe(catchError(this.formatErrors));
+  }
+
   put(path: string, body: Object = {}): Observable<any> {
     return this.http
       .put(`${environment.api_url}${path}`, JSON.stringify(body))
+      .pipe(catchError(this.formatErrors));
+  }
+
+  putUser(path: string, body): Observable<any> {
+    return this.http
+      .put(`${this.userUrl}${path}`, body)
       .pipe(catchError(this.formatErrors));
   }
 
@@ -64,11 +77,11 @@ export class ApiService {
   //     .pipe(catchError(this.formatErrors));
   // }
 
-  postOrder(path: string, body: Object = {}, param?:Object): Observable<any> {
+  postOrder(path: string, body: Object = {}, params: HttpParams = new HttpParams()): Observable<any> {
     console.log("path..." + environment.api_url + path);
     console.log("body..." , body);
     return this.http
-      .post(`${this.orderUrl}${path}`, body , param)
+      .post(`${this.orderUrl}${path}`, body , {params})
       .pipe(catchError(this.formatErrors));
   }
 

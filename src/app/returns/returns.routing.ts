@@ -9,7 +9,7 @@ const routes: Routes = [
         path: '', component: ReturnsDashboardComponent
     },
     {
-        path: 'returnsprofile/:id', component: ReturnssProfileComponent
+        path: 'returnprofile/:id', component: ReturnssProfileComponent
     }
 ];
 
