@@ -17,7 +17,7 @@ export class ApiService {
    userUrl='http://localhost:8081/urban/';
   // userUrl='https://user2.cfapps.io/urban/';
   // orderUrl = "https://myorder.cfapps.io/";
-  orderUrl = 'http://localhost:8082/';
+  productUrl = 'http://localhost:8082/';
   constructor(
     private http: HttpClient,
     // private jwtService: JwtServiceService,
@@ -43,7 +43,7 @@ export class ApiService {
 
   getOrder(path: string, params: HttpParams = new HttpParams()): Observable<any> {
     return this.http
-      .get(this.orderUrl + path, { params })
+      .get(this.productUrl + path, { params })
       .pipe(catchError(this.formatErrors));
   }
 
@@ -81,7 +81,7 @@ export class ApiService {
     console.log("path..." + environment.api_url + path);
     console.log("body..." , body);
     return this.http
-      .post(`${this.orderUrl}${path}`, body , {params})
+      .post(`${this.productUrl}${path}`, body , {params})
       .pipe(catchError(this.formatErrors));
   }
 
