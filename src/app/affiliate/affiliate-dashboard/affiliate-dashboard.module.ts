@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AffiliateRoutingModule } from '../affiliate-routing';
 import { AffiliateDashboardComponent } from './affiliate-dashboard.component';
-
+import {NgxPaginationModule} from 'ngx-pagination'; 
 
 
 @NgModule({
@@ -11,7 +11,8 @@ import { AffiliateDashboardComponent } from './affiliate-dashboard.component';
   ],
   imports: [
     CommonModule,
-    AffiliateRoutingModule
+    AffiliateRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class AffiliateDashboardModule { }

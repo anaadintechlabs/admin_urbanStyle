@@ -18,7 +18,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let data of affiliateList; let i = index">
+                            <tr *ngFor="let data of affiliateList| paginate: { itemsPerPage: limit, currentPage: offset,totalItems: count }; let i = index">
                                 <td>{{i+1}}</td>
                                 <td>AFF- {{data.id}}</td>
                                 <td>
@@ -31,6 +31,7 @@
                             </tr>
                             
                         </tbody>
+                        <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
                     </table>
                 </div>
             </div>

@@ -17,7 +17,7 @@ export class ProductComponent implements OnInit {
     "offset":this.offset,
     "sortingDirection":this.sortingDirection,
     "sortingField":this.sortingField
-  }
+  };
 
 
   public count;

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { VendorRoutingModule } from '../vendor-routing';
 import { VendorDashboardComponent } from './vendor-dashboard.component';
 import { VendorProfileComponent } from './vendor-profile/vendor-profile.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { VendorProfileComponent } from './vendor-profile/vendor-profile.componen
   ],
   imports: [
     CommonModule,
-    VendorRoutingModule
+    VendorRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class VendorDashboardModule { }

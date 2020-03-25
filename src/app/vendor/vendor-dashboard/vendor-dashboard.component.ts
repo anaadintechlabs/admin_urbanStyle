@@ -9,12 +9,19 @@ import { Router } from '@angular/router';
 })
 export class VendorDashboardComponent implements OnInit {
   public vendorsList: any[];
+  public limit=15;
+  public offset=0;
+  public sortingField="joinDate";
+  public sortingDirection="desc";
+  public count;
+
   public request = {
-    limit: 15,
-    offset: 0,
-    sortingDirection: 'desc',
-    sortingField: 'joinDate'
+    "limit":this.limit,
+    "offset":this.offset,
+    "sortingDirection":this.sortingDirection,
+    "sortingField":this.sortingField
   };
+
 
   constructor(
     private vendorService: VendorService,
@@ -31,6 +38,8 @@ export class VendorDashboardComponent implements OnInit {
     this.vendorService.getAllUserByUserType(url, this.request, {userType : 'VENDOR'}).subscribe(
       data => {
         this.vendorsList = data.data.userList;
+        this.count = data.data.count;
+        console.log(this.count);
         console.log(this.vendorsList);
       }, error => {
         console.log(error);
@@ -40,6 +49,13 @@ export class VendorDashboardComponent implements OnInit {
 
   navigateToVendorProfile(id) {
     this.router.navigateByUrl('/vendor/vendorprofile/'+ id);
+  }
+
+  pageChanged(event){
+    console.log("page changes"+event)
+    this.request.offset=event-1;
+    this.offset=event;
+    this.getVendorList();
   }
 
 }
