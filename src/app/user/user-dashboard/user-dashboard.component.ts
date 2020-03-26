@@ -9,15 +9,19 @@ import { UserService } from '../service/user.service';
   styleUrls: ["./user-dashboard.component.css"]
 })
 export class UserDashboardComponent implements OnInit {
-  userList= [];
+  public userList: any[];
+  public limit=15;
+  public offset=0;
+  public sortingField="joinDate";
+  public sortingDirection="desc";
+  public count;
 
   public request = {
-    limit: 15,
-    offset: 0,
-    sortingDirection: 'desc',
-    sortingField: 'joinDate'
+    "limit":this.limit,
+    "offset":this.offset,
+    "sortingDirection":this.sortingDirection,
+    "sortingField":this.sortingField
   };
-
 
   constructor(
     private router: Router,
@@ -28,11 +32,14 @@ export class UserDashboardComponent implements OnInit {
     this.getUserList();
   }
 
+
   getUserList() {
     let url = 'api/user/getAllUserByUserType';
     this.userService.getAllUserByUserType(url, this.request, {userType : 'CUSTOMER'}).subscribe(
       data => {
         this.userList = data.data.userList;
+        this.count = data.data.count;
+        console.log(this.count);
         console.log(this.userList);
       }, error => {
         console.log(error);
@@ -43,5 +50,12 @@ export class UserDashboardComponent implements OnInit {
 
   navigateToUserProfile(id) {
     this.router.navigateByUrl('/user/userprofile/'+ id);
+  }
+
+  pageChanged(event){
+    console.log("page changes"+event)
+    this.request.offset=event-1;
+    this.offset=event;
+    this.getUserList();
   }
 }

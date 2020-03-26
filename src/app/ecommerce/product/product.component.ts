@@ -5,6 +5,7 @@ import { ProductService } from './service/product.service';
 })
 export class ProductComponent implements OnInit {
 
+  public statusString: string ='Active Products';
   public productList: any[];
   public status: number = 1;
   public limit=15;
@@ -17,7 +18,7 @@ export class ProductComponent implements OnInit {
     "offset":this.offset,
     "sortingDirection":this.sortingDirection,
     "sortingField":this.sortingField
-  }
+  };
 
 
   public count;
@@ -31,7 +32,14 @@ export class ProductComponent implements OnInit {
   }
 
   getAllProducts(status) {
+    
     this.status = status;
+    if(this.status === 0) {
+      this.statusString = 'Inactive Products';
+    }
+    else {
+        this.statusString = 'Active Products';
+    }
     let url = 'product/getAllVariantsByStatusWithPagination';
     console.log(this.request)
     this.productService.getAllVariantsByStatus(url, this.request,{status: status}).subscribe(

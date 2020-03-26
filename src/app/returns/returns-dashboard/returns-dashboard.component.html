@@ -20,7 +20,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let data of returnsList; let i = index">
+                            <tr *ngFor="let data of returnsList| paginate: { itemsPerPage: limit, currentPage: offset,totalItems: count }; let i = index">
                                 <td>{{i+1}}</td>
                                 <td (click)="navigateToReturnProfile(data.returnId)">RET-{{data.returnId}}</td>
                                 <td>
@@ -35,6 +35,7 @@
                             </tr>
                         </tbody>
                     </table>
+                    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
                 </div>
             </div>
         </div>

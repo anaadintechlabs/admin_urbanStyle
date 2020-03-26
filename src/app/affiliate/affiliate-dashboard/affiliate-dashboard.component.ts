@@ -9,12 +9,19 @@ import { Router } from '@angular/router';
 })
 export class AffiliateDashboardComponent implements OnInit {
   public affiliateList: any[];
+  public limit=15;
+  public offset=0;
+  public sortingField="joinDate";
+  public sortingDirection="desc";
+  public count;
+
   public request = {
-    limit: 15,
-    offset: 0,
-    sortingDirection: 'desc',
-    sortingField: 'joinDate'
+    "limit":this.limit,
+    "offset":this.offset,
+    "sortingDirection":this.sortingDirection,
+    "sortingField":this.sortingField
   };
+
 
   constructor(private affiliateService: AffiliateService, private router: Router) { }
 
@@ -27,11 +34,20 @@ export class AffiliateDashboardComponent implements OnInit {
     this.affiliateService.getAllUserByUserType(url, this.request, {userType : 'AFFILIATE'}).subscribe(
       data => {
         this.affiliateList = data.data.userList;
+        this.count = data.data.count;
+        console.log(this.count);
         console.log(this.affiliateList);
       }, error => {
         console.log(error);
       }
     )
+  }
+
+  pageChanged(event){
+    console.log("page changes"+event)
+    this.request.offset=event-1;
+    this.offset=event;
+    this.getAffiliateList();
   }
 
 }
