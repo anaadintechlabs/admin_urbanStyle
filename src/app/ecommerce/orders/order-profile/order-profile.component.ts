@@ -43,6 +43,12 @@ export class OrderProfileComponent implements OnInit {
 
   closeOrder() {
     let url = 'api/setStatusbyAdmin';
+    this.params = {
+      orderId: Number(this.orderData.userOrder.id),
+      orderProdId: this.orderData.id,
+      status: 'COMPLETE',
+      userId: this.orderData.userOrder.user.id
+    }
     this.orderService.setStatusbyAdmin(url, this.params).subscribe(
       data => {
         this.router.navigateByUrl('/ecom/orders');

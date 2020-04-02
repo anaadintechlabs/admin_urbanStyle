@@ -10,6 +10,9 @@ import { validateEvents } from 'angular-calendar/modules/common/util';
   styleUrls: ['./edit-profile.component.css']
 })
 export class EditProfileComponent implements OnInit {
+  imageUrl = "http://localhost:8081/urban/downloadFile/";
+  userUrl='http://localhost:8081/urban/'
+  
   public adminData: any;
   public adminId: number;
   public adminProfileForm: FormGroup;
@@ -39,7 +42,7 @@ export class EditProfileComponent implements OnInit {
 
    
 
-    let url = 'api/user/getUserById';
+    let url =  'api/user/getUserById';
     this.getAdminDataFromApi(url, {userId: this.adminId});
   }
 
@@ -54,6 +57,7 @@ export class EditProfileComponent implements OnInit {
 
   onSelectFile(event) {
     this.myFiles= [];
+    this.urlArray=[];
     for (var i = 0; i < event.target.files.length; i++) { 
 
     console.log(event.target.files);
@@ -93,7 +97,7 @@ export class EditProfileComponent implements OnInit {
         formData.append("file", this.myFiles[i]);
       }
 
-      let url = 'api/user/updateUser';
+      let url = this.userUrl+'api/user/updateUser';
       this.updateUser(url, formData);
     } else {
       alert("Invalid Details!");
@@ -140,7 +144,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   updateUser(url, body) {
-    this.apiService.putUser(url, body).subscribe(
+    this.apiService.putUserWithMedia(url, body).subscribe(
       data => {
         console.log(data);
         this.getAdminData();

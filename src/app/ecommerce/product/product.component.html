@@ -16,7 +16,7 @@
                         <thead>
                             <tr>
                                 <th>Sr No.</th>
-                                <th>Product ID</th>
+                                <th>Product Code</th>
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>Brand</th>
@@ -30,7 +30,7 @@
                         <tbody>
                             <tr *ngFor="let data of productList| paginate: { itemsPerPage: limit, currentPage: offset,totalItems: count }; let i = index">
                                 <td>{{i+1}}</td>
-                                <td>PROD-{{data.product?.productId}}</td>
+                                <td>{{data.variantCode}}</td>
                                 <td>
                                     <img [src]="data.mainImageUrl" alt="Product image" width="80"> </td>
                                 <td>{{data.product?.productName}}</td>
@@ -39,31 +39,31 @@
                                 <td>{{data.displayPrice}}</td>
                                 <td>
                                     <button *ngIf="!data.fetauredProduct" class="btn btn-success" 
-                                        (click)="setFeaturedProduct(data.product?.productId, 'yes')" type="button">
+                                        (click)="setFeaturedProduct(data.productVariantId, 'yes')" type="button">
                                         Add
                                     </button>   
                                     <button *ngIf="data.fetauredProduct" class="btn btn-danger" 
-                                        (click)="setFeaturedProduct(data.product?.productId, 'no')" type="button">
+                                        (click)="setFeaturedProduct(data.productVariantId, 'no')" type="button">
                                         Remove
                                     </button>   
                                 </td>
                                 <td>
                                     <button *ngIf="!data.dealOfTheDay" class="btn btn-success" 
-                                        (click)="setDealOfTheDay(data.product?.productId, 'yes')" type="button">
+                                        (click)="setDealOfTheDay(data.productVariantId, 'yes')" type="button">
                                         Add
                                     </button>   
                                     <button *ngIf="data.dealOfTheDay" class="btn btn-danger" 
-                                    (click)="setDealOfTheDay(data.product?.productId, 'no')" type="button">
+                                    (click)="setDealOfTheDay(data.productVariantId, 'no')" type="button">
                                         Remove
                                     </button>
                                 </td>
                                 <td>
                                     <button *ngIf="data.status === 0" class="btn btn-primary"
-                                        (click)="changeStatus(data.product?.productId, 1)" type="button">
+                                        (click)="changeStatus(data.productVariantId, 1)" type="button">
                                         Change to Active
                                     </button>   
                                     <button *ngIf="data.status === 1" class="btn btn-primary" 
-                                        (click)="changeStatus(data.product?.productId, 0)" type="button">
+                                        (click)="changeStatus(data.productVariantId, 0)" type="button">
                                         Change to Inactive
                                     </button>
                                 </td>

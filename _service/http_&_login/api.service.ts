@@ -9,6 +9,7 @@ import {
 } from "@angular/common/http";
 import { catchError } from "rxjs/internal/operators/catchError";
 import { Observable, throwError } from "rxjs";
+import { JwtServiceService } from "./jwt-service.service";
 
 @Injectable({
   providedIn: "root"
@@ -20,7 +21,7 @@ export class ApiService {
   productUrl = 'http://localhost:8082/';
   constructor(
     private http: HttpClient,
-    // private jwtService: JwtServiceService,
+     private jwtService: JwtServiceService,
     private httpBackend: HttpBackend
   ) {}
 
@@ -57,6 +58,18 @@ export class ApiService {
     return this.http
       .put(`${this.userUrl}${path}`, body)
       .pipe(catchError(this.formatErrors));
+  }
+
+  putUserWithMedia(path,body)
+  {
+    const HttpUploadOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + this.jwtService.getToken()
+      }),
+    }
+    this.http= new HttpClient(this.httpBackend);
+    return this.http.put(path,body,HttpUploadOptions).pipe(catchError(this.formatErrors));
+
   }
 
   post(path: string, body: Object = {},  params: HttpParams = new HttpParams()): Observable<any> {
