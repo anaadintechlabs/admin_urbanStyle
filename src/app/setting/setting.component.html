@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Settings</h3>
+      <hr>
+      <div class="row">
+          
+            
+
+        <div class="col-lg-8 col-md-8 col-sm-6 p-l-30">
+            <h3>Edit Password</h3>
+            <form [formGroup]="adminPwdForm" (ngSubmit)="submitPassword()">
+                <div class="form-group">
+                    <label>Old Password</label>
+                    <input type="password" class="form-control" formControlName="oldPassword">
+                </div>
+                <div class="form-group">
+                    <label>New Password</label>
+                    <input type="password" class="form-control" formControlName="newPassword">
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" class="form-control" formControlName="confirmPassword">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success float-right" type="submit">Change Password</button>
+
+                </div>
+            </form>
+        </div>
+           
+      </div>
+    </div>
+  </div>

@@ -48,7 +48,8 @@ export class EditProfileComponent implements OnInit {
       id: new FormControl(this.adminData.id, [Validators.required]),
       name: new FormControl(this.adminData.name, [Validators.required]),
       phoneNumber: new FormControl(this.adminData.phoneNumber, [Validators.required]),
-      email: new FormControl(this.adminData.email, [Validators.required])
+      email: new FormControl(this.adminData.email, [Validators.required]),
+      bio: new FormControl(this.adminData.bio, [])
     })
   }
 
@@ -119,6 +120,7 @@ export class EditProfileComponent implements OnInit {
     this.apiService.getUser(path, params).subscribe(
       data => {
         this.adminData = data.data.user;
+        console.log("admin data",this.adminData);
         this.createProfileForm();
         console.log(this.adminData);
       }, error => {

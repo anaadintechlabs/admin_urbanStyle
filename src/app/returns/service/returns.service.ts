@@ -11,7 +11,7 @@ export class ReturnsService {
 
   getReturnForSuperAdmin(path, request): Observable<any> {
     return new Observable<any> (obs => {
-      this.apiService.post(path, request).subscribe(data => {
+      this.apiService.postOrder(path, request).subscribe(data => {
         obs.next(data);
       });
     })
@@ -19,7 +19,7 @@ export class ReturnsService {
 
   getAllDetailOfReturn(path, param): Observable<any> {
     return new Observable<any> (obs => {
-      this.apiService.get(path, param).subscribe(data => {
+      this.apiService.getOrder(path, param).subscribe(data => {
         obs.next(data);
       });
     })
@@ -27,7 +27,7 @@ export class ReturnsService {
 
   setReturnStatusbyAdmin(path,request, params): Observable<any> {
     return new Observable<any> (obs => {
-      this.apiService.post(path, request, params).subscribe(data => {
+      this.apiService.postOrder(path, request, params).subscribe(data => {
         obs.next(data);
       })
     });

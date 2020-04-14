@@ -19,7 +19,7 @@ export class VendorService {
 
   getDetailOfVendor(path, request, param): Observable<any> {
     return new Observable<any> (obs => {
-      this.apiService.post(path, request, param).subscribe(data => {
+      this.apiService.postOrder(path, request, param).subscribe(data => {
         obs.next(data);
       });
     })

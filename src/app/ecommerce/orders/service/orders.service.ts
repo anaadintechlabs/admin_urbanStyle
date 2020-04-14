@@ -11,7 +11,7 @@ export class OrdersService {
 
   getAllOrderForSuperAdmin(path, request): Observable<any> {
     return new Observable<any>(obs => {
-      this.apiService.post(path, request).subscribe(data => {
+      this.apiService.postOrder(path, request).subscribe(data => {
         obs.next(data);
       })
     });
@@ -19,7 +19,7 @@ export class OrdersService {
 
   getOrderById(path, param): Observable<any> {
     return new Observable<any> (obs => {
-      this.apiService.get(path, param).subscribe(data => {
+      this.apiService.getOrder(path, param).subscribe(data => {
         obs.next(data);
       })
     });
@@ -27,7 +27,7 @@ export class OrdersService {
 
   setStatusbyAdmin(path, params): Observable<any> {
     return new Observable<any> (obs => {
-      this.apiService.get(path, params).subscribe(data => {
+      this.apiService.getOrder(path, params).subscribe(data => {
         obs.next(data);
       })
     });

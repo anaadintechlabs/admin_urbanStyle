@@ -11,7 +11,7 @@ export class DashboardService {
 
   getTop5Users(path, param): Observable<any> {
     return new Observable<any>(obs => {
-      this.apiService.get(path, param).subscribe(data => {
+      this.apiService.getOrder(path, param).subscribe(data => {
         obs.next(data);
       })
     });
@@ -19,7 +19,7 @@ export class DashboardService {
 
   getLastReturns(path, param): Observable<any> {
     return new Observable<any>(obs => {
-      this.apiService.get(path, param).subscribe(
+      this.apiService.getOrder(path, param).subscribe(
         data=> {
           obs.next(data);
         }
@@ -28,8 +28,9 @@ export class DashboardService {
   }
 
   getLastOrders(path, param): Observable<any> {
+    console.log('path',path)
     return new Observable<any>(obs => {
-      this.apiService.get(path, param).subscribe(
+      this.apiService.getOrder(path, param).subscribe(
         data=> {
           obs.next(data);
         }
@@ -39,7 +40,7 @@ export class DashboardService {
 
   getAllOrderByStatus(path, param): Observable<any> {
     return new Observable<any>(obs => {
-      this.apiService.get(path, param).subscribe(
+      this.apiService.getOrder(path, param).subscribe(
         data=> {
           obs.next(data);
         }

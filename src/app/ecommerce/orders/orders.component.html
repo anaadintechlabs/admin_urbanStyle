@@ -11,7 +11,7 @@
                                 <th>Order ID</th>
                                 <th>Image</th>
                                 <th>Name</th>
-                                <th>Brand</th>
+                                <!-- <th>Brand</th> -->
                                 <th>Quantity</th>
                                 <th>Order Price</th>
                                 <th>Status</th>
@@ -22,16 +22,16 @@
                         <tbody>
                             <tr *ngFor="let data of ordersList| paginate: { itemsPerPage: limit, currentPage: offset,totalItems: count }; let i = index">
                                 <td>{{i+1}}</td>
-                                <td (click)="navigateToOrderProfile(data.id)">ORD-{{data.id}}</td>
+                                <td (click)="navigateToOrderProfile(data.orderProductId)">ORD-{{data.orderProductId}}</td>
                                 <td>
-                                    <img [src]="data.product?.mainImageUrl" alt="Product image" width="80"> </td>
-                                <td>{{data.product?.product?.productName}}</td>
-                                <td>{{data.product?.product?.brandName}}</td>
+                                    <img [src]="data.mainImageUrl" alt="Product image" width="80"> </td>
+                                <td>{{data.variantName}}</td>
+                                <!-- <td>{{data.product?.product?.brandName}}</td> -->
                                 <td>{{data.quantity}}</td>
                                 <td>{{data.orderProductPrice}}</td>
                                 <td>{{data.status}}</td>
-                                <td>CUST-{{data.userOrder?.id}}</td>
-                                <td>VEN-{{data.vendor?.id}}</td>
+                                <td>{{data.userName}}( {{data.userId}} )</td>
+                                <td>{{data.vendorName}}({{data.vendorId}})</td>
                             </tr>
                             
                         </tbody>

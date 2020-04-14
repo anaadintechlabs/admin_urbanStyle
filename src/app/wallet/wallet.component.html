@@ -1,0 +1,83 @@
+<div class="row">
+    <!-- Column -->
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Consolidated Balance: ${{walletDetails?.amount}}</h3>
+                <hr>
+                <h3 class="card-title">Outgoing Transactions:</h3>
+
+                <div class="table-responsive">
+                    <table class="table v-middle product-overview" id="zero_config">
+                        <thead>
+                            <tr>
+                                <th>Transaction Id</th>
+                                <th>Order Id</th>
+                                <th>Amount</th>
+                                <th>Receiver</th>
+                                <th>Status</th>
+                                <th>Date</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let transaction of outgoingTransactionList">
+                                <td>TRANSACTION-{{ transaction.id }}</td>
+                                <td>ORDER-{{ transaction.orderId }}</td>
+
+                                <td>-{{ transaction.amount }}</td>
+                                <td>{{ transaction.reciever }}</td>
+                                <td>{{ transaction.type }}</td>
+                                <td>{{ transaction.createdDate | date }}</td>
+
+                            </tr>
+                            <tr *ngIf="outgoingTransactionList && outgoingTransactionList.length ==0 ">
+                                <td scope="row">No record found</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+                    <!-- <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls> -->
+                </div>
+        <h3 class="card-title">Incoming Transactions:</h3>
+
+                <div class="table-responsive">
+                    <table class="table v-middle product-overview" id="zero_config">
+                        <thead>
+                            <tr>
+                                <th>Transaction Id</th>
+                                <th>Order Id</th>
+                                <th>Amount</th>
+                                <th>Sender</th>
+                                <th>Status</th>
+                                <th>Date</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let transaction of incomingTransactionList| paginate: { itemsPerPage: limit, currentPage: offset,totalItems: count }; let i = index">
+                                <td>TRANSACTION-{{ transaction.id }}</td>
+                                <td>ORDER-{{ transaction.orderId }}</td>
+
+                                <td>{{ transaction.amount }}</td>
+                                <td>{{ transaction.sender }}</td>
+                                <td>{{ transaction.type }}</td>
+                                <td>{{ transaction.createdDate | date }}</td>
+
+                            </tr>
+                            <tr *ngIf="incomingTransactionList && incomingTransactionList.length ==0 ">
+                                <td scope="row">No record found</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+                    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Column -->
+</div>

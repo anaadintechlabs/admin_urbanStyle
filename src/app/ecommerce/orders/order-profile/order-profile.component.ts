@@ -42,6 +42,7 @@ export class OrderProfileComponent implements OnInit {
   }
 
   closeOrder() {
+    
     let url = 'api/setStatusbyAdmin';
     this.orderService.setStatusbyAdmin(url, this.params).subscribe(
       data => {

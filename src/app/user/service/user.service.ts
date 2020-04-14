@@ -19,10 +19,26 @@ export class UserService {
 
   getAllCartAndWishlist(path, request, param): Observable<any> {
     return new Observable<any>(obs => {
-      this.apiService.post(path, request, param).subscribe(data => {
+      this.apiService.postOrder(path, request, param).subscribe(data => {
         obs.next(data);
       });
     });
+  }
+
+  getWalletDetailsOfUser(filter)
+  {
+ let currunt_user = JSON.parse(this.getUser());
+    const route ='api/getWalletByUser?userId='+currunt_user.id;
+    return new Observable<any>(obs =>{
+      this.apiService.postOrder(route,filter).subscribe(data=>{
+        obs.next(data);
+      })
+    })
+
+  }
+
+   getUser(): string {
+    return window.localStorage['user'];
   }
 
 }

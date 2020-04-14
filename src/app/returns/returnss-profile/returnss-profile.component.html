@@ -6,18 +6,18 @@
         <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="white-box text-center">
                 
-                <img [src]="returnData?.orderProduct?.product?.mainImageUrl" alt="Product image" class="img-responsive"> 
+                <img [src]="returnData?.mainImageUrl" alt="Product image" class="img-responsive"> 
             </div>
         </div>
         <div class="col-lg-8 col-md-8 col-sm-6">
-            <h4 class="box-title m-t-40">{{returnData?.orderProduct?.product?.product?.productName}}</h4>
-            <p>{{returnData?.orderProduct?.product?.product?.longDescription}}</p>
+            <h4 class="box-title m-t-40">{{returnData?.variantName}}</h4>
+            <p>{{returnData?.variantCode}}</p>
 
             <table class="table table-borderless">
                 <tbody>
                     <tr>
-                        <th>Brand Name</th>
-                        <td>{{returnData?.orderProduct?.product?.product?.brandName}}</td>
+                        <th>Producer</th>
+                        <td>{{returnData?.vendorName}}</td>
                         <th>Reason</th>
                         <td>{{returnData?.reason}}</td>
                     </tr>
@@ -29,9 +29,9 @@
                     </tr>
                     <tr>
                         <th>Order Price</th>
-                        <td>{{returnData?.orderProduct?.orderProductPrice}}</td>
+                        <td>{{returnData?.orderProductPrice}}</td>
                         <th>Quantity</th>
-                        <td>{{returnData?.orderProduct?.quantity}}</td>
+                        <td>{{returnData?.quantity}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -49,28 +49,23 @@
             </div>
         </div> 
         <div class="col-lg-8 col-md-8 col-sm-6">
-            <h4 class="box-title m-t-40">{{returnData?.user?.name}}</h4>
+            <h4 class="box-title m-t-40">{{returnData?.userName}}</h4>
             
             <table class="table table-borderless">
                 <tbody>
                     <tr>
                         <!-- <th>Brand Name</th> -->
-                        <th>ID-{{returnData?.user?.id}}</th>
+                        <th>ID-{{returnData?.userId}}</th>
                         <!-- <th>Features</th> -->
-                        <th>Join Date- {{returnData?.user?.joinDate | date: 'short'}}</th>
+                        <th>Name- {{returnData?.userName}}</th>
                     </tr>
                     <tr>
                         <!-- <th>Brand Name</th> -->
-                        <th>{{returnData?.user?.userType}}</th>
+                        <!-- <th>{{returnData?.city}},{{returnData?.state}}</th> -->
                         <!-- <th>Features</th> -->
-                        <th>{{returnData?.user?.provider}}</th>
+                        <!-- <th>{{returnData?.zip}}</th> -->
                     </tr>
-                    <tr>
-                        <!-- <th>Display Price</th> -->
-                        <th>{{returnData?.user?.email}}</th>
-                        <!-- <th>Sale Price</th> -->
-                        <th>{{returnData?.user?.phoneNumber}}</th>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
@@ -86,27 +81,23 @@
             </div>
         </div> 
         <div class="col-lg-8 col-md-8 col-sm-6">
-            <h4 class="box-title m-t-40">{{returnData?.orderProduct?.vendor?.name}}</h4>
+            <h4 class="box-title m-t-40">{{returnData?.vendorName}}</h4>
             <table class="table table-borderless">
                 <tbody>
                     <tr>
                         <!-- <th>Brand Name</th> -->
-                        <th>ID-{{returnData?.orderProduct?.vendor?.id}}</th>
+                        <th>ID-{{returnData?.vendorId}}</th>
                         <!-- <th>Features</th> -->
-                        <th>Join Date- {{returnData?.orderProduct?.vendor?.joinDate | date: 'short'}}</th>
+                        <th>Name- {{returnData?.vendorName}}</th>
                     </tr>
-                    <tr>
-                        <!-- <th>Brand Name</th> -->
+                    <!-- <tr>
                         <th>{{returnData?.orderProduct?.vendor?.userType}}</th>
-                        <!-- <th>Features</th> -->
                         <th>{{returnData?.orderProduct?.vendor?.provider}}</th>
                     </tr>
                     <tr>
-                        <!-- <th>Display Price</th> -->
                         <th>{{returnData?.orderProduct?.vendor?.email}}</th>
-                        <!-- <th>Sale Price</th> -->
                         <th>{{returnData?.orderProduct?.vendor?.phoneNumber}}</th>
-                    </tr>
+                    </tr> -->
                     
                 </tbody>
             </table>

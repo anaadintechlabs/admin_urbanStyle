@@ -14,10 +14,10 @@ import { Observable, throwError } from "rxjs";
   providedIn: "root"
 })
 export class ApiService {
-   userUrl='http://localhost:8081/urban/';
-  // userUrl='https://user2.cfapps.io/urban/';
-  // orderUrl = "https://myorder.cfapps.io/";
-  productUrl = 'http://localhost:8082/';
+   //userUrl='http://localhost:8081/urban/';
+   userUrl='https://userurban.cfapps.io/urban/';
+   orderUrl = "https://myorder.cfapps.io/";
+  productUrl = 'https://producturban.cfapps.io/';
   constructor(
     private http: HttpClient,
     // private jwtService: JwtServiceService,
@@ -31,7 +31,7 @@ export class ApiService {
 
   get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
     return this.http
-      .get(`${environment.api_url}${path}`, { params })
+      .get(`${this.productUrl}${path}`, { params })
       .pipe(catchError(this.formatErrors));
   }
 
@@ -43,13 +43,13 @@ export class ApiService {
 
   getOrder(path: string, params: HttpParams = new HttpParams()): Observable<any> {
     return this.http
-      .get(this.productUrl + path, { params })
+      .get(this.orderUrl + path, { params })
       .pipe(catchError(this.formatErrors));
   }
 
   put(path: string, body: Object = {}): Observable<any> {
     return this.http
-      .put(`${environment.api_url}${path}`, JSON.stringify(body))
+      .put(`${this.productUrl}${path}`, JSON.stringify(body))
       .pipe(catchError(this.formatErrors));
   }
 
@@ -64,7 +64,7 @@ export class ApiService {
     console.log("body..." , body);
     console.log("params...", params);
     return this.http
-      .post(`${environment.api_url}${path}`, body , {params})
+      .post(`${this.productUrl}${path}`, body , {params})
       .pipe(catchError(this.formatErrors));
   }
 
@@ -81,7 +81,7 @@ export class ApiService {
     console.log("path..." + environment.api_url + path);
     console.log("body..." , body);
     return this.http
-      .post(`${this.productUrl}${path}`, body , {params})
+      .post(`${this.orderUrl}${path}`, body , {params})
       .pipe(catchError(this.formatErrors));
   }
 
@@ -109,7 +109,7 @@ export class ApiService {
 
   delete(path): Observable<any> {
     return this.http
-      .delete(`${environment.api_url}${path}`)
+      .delete(`${this.productUrl}${path}`)
       .pipe(catchError(this.formatErrors));
   }
 

@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="col-lg-8 col-md-8 col-sm-6">
-                <h4 class="box-title m-t-30">{{vendorData?.vendorInfo?.name}}</h4>
+                <h4 class="box-title m-t-30">{{vendorData?.vendorInfo?.name}}{{vendorData?.vendorInfo?.lastName}}</h4>
                 <table class="table table-borderless">
                     <tbody>
                         <tr>
@@ -20,7 +20,7 @@
                             <!-- <td></td> -->
                         </tr>
                         <tr>
-                            <th>Provider- {{vendorData?.vendorInfo?.provider}}</th>
+                            <th>Bio- {{vendorData?.vendorInfo?.bio}}</th>
                             <!-- <td></td> -->
                             <th>Join Date- {{vendorData?.vendorInfo?.joinDate | date: 'short'}}</th>
                             <!-- <td></td> -->
@@ -83,8 +83,8 @@
                     <th>Order ID</th>
                     <th>Customer Name</th>
                     <th>Order Price</th>
-                    <th>Address</th>
-                    <th>City</th>
+                    <th>Order Date</th>
+                    
                     <th>Quantity</th>
                     <th>Status</th>
                 </tr>
@@ -92,11 +92,11 @@
             <tbody>
                 <tr *ngFor="let order of vendorOrderList; let i = index">
                     <td>{{i+1}}</td>
-                    <td>ORD-{{order.id}}</td>
-                    <td>{{order.userOrder?.user?.name}}</td>
+                    <td>ORD-{{order.orderProductId}}</td>
+                    <td>{{order.userName}}</td>
                     <td>{{order.orderProductPrice}}</td>
-                    <td>{{order.userOrder?.address?.addressOne}}</td>
-                    <td>{{order.userOrder?.address?.cite?.cityName}}</td>
+                    <td>{{order.orderPlacedDate | date}}</td>
+                    
                     <td>{{order.quantity}}</td>
                     <td>{{order.status}}</td>
                 </tr>

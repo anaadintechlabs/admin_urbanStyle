@@ -7,6 +7,7 @@ import { Dashboard3Component } from './dashboard3/dashboard3.component';
 export const DashboardRoutes: Routes = [
   {
     path: '',
+    component:Dashboard1Component,
     children: [
       {
         path: 'classic',

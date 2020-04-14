@@ -19,7 +19,9 @@ export class NavigationComponent implements AfterViewInit {
   public config: PerfectScrollbarConfigInterface = {};
 
   public showSearch = false;
-
+  public user:any;
+    public userName:any;
+    public email:any;
   constructor(
     private modalService: NgbModal,
     private _userService : UserService,
@@ -95,5 +97,18 @@ export class NavigationComponent implements AfterViewInit {
     }
   ];
 
-  ngAfterViewInit() {}
+  ngOnInit()
+  {
+    console.log("on init");
+   this.user =  JSON.parse(this._userService.getUser());
+   if(this.user)
+    {
+      this.userName=this.user.userName;
+      this.email=this.user.email;
+    }
+  }
+
+  ngAfterViewInit() {
+
+  }
 }

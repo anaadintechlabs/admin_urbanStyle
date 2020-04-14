@@ -11,7 +11,7 @@ export class ProductService {
 
   getAllVariantsByStatus(path, body,param): Observable<any> {
     return new Observable<any>(obs => {
-      this.apiService.postOrder(path,body, param).subscribe(data => {
+      this.apiService.post(path,body, param).subscribe(data => {
         obs.next(data);
       }); 
     })
@@ -19,7 +19,7 @@ export class ProductService {
 
   changeStatusOfProductVariantForSuperAdmin(path, body, param): Observable<any> {
     return new Observable<any>(obs => {
-      this.apiService.postOrder(path, body, param).subscribe(data => {
+      this.apiService.post(path, body, param).subscribe(data => {
         obs.next(data);
       }); 
     })
@@ -27,7 +27,7 @@ export class ProductService {
 
   setFeaturedProduct(path, param): Observable<any> {
     return new Observable<any>(obs => {
-      this.apiService.getOrder(path, param).subscribe(data => {
+      this.apiService.get(path, param).subscribe(data => {
         obs.next(data);
       }); 
     })
@@ -36,7 +36,7 @@ export class ProductService {
 
   setDealOftheDay(path, param): Observable<any> {
     return new Observable<any>(obs => {
-      this.apiService.getOrder(path, param).subscribe(data => {
+      this.apiService.get(path, param).subscribe(data => {
         obs.next(data);
       }); 
     })

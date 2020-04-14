@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -32,6 +32,8 @@ import { HttpTokenInterceptorService } from "_service/http_&_login/http-token-in
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { EcomModule } from './ecommerce/ecom.module';
+import { SettingComponent } from './setting/setting.component';
+import { WalletComponent } from './wallet/wallet.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -51,6 +53,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BreadcrumbComponent,
     SidebarComponent,
     EditProfileComponent,
+    SettingComponent,
+    WalletComponent,
   ],
   imports: [
     CommonModule,
@@ -77,9 +81,14 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     },
+    {
+      provide: LocationStrategy,
+      useClass : HashLocationStrategy
+      },
     JwtServiceService
-  ],
-  bootstrap: [AppComponent]
+    ],
+  bootstrap: [AppComponent],
+  
   
 })
 export class AppModule { }

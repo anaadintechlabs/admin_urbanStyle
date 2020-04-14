@@ -5,6 +5,8 @@ import { FullComponent } from './layouts/full/full.component';
 import { BlankComponent } from './layouts/blank/blank.component';
 import { AuthGuardService } from '_service/http_&_login/authGuard.service';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { SettingComponent } from "src/app/setting/setting.component";
+import { WalletComponent } from "src/app/wallet/wallet.component";
 
 export const Approutes: Routes = [
   {
@@ -44,6 +46,14 @@ export const Approutes: Routes = [
       {
         path: 'profile',
         component: EditProfileComponent
+      },
+       {
+        path: 'setting',
+        component: SettingComponent
+      },
+      {
+        path: 'wallet',
+        component: WalletComponent
       },
       {
         path: 'component',

@@ -29,7 +29,7 @@
     <!-- ============================================================== -->
     <!-- Messages -->
     <!-- ============================================================== -->
-    <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
+    <!-- <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
         <a ngbDropdownToggle class="nav-link dropdown-toggle waves-effect waves-dark" href="javascript:void(0)" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="font-22 mdi mdi-email-outline"></i>
         </a>
@@ -38,15 +38,14 @@
                 <span class="bg-danger"></span>
             </span>
             <ul class="list-style-none">
-                <li>
+                 <li>
                     <div class="drop-title text-white bg-danger">
                         <h4 class="m-b-0 m-t-5">5 New</h4>
                         <span class="font-light">Messages</span>
                     </div>
-                </li>
-                <li>
+                </li> 
+                 <li>
                     <div class="message-center message-body" [perfectScrollbar]="config">
-                        <!-- Message -->
                         <a href="javascript:void(0)" class="message-item" *ngFor="let mymessage of mymessages">
                             <span class="user-img">
                                 <img src="{{mymessage.useravatar}}" alt="user" class="rounded-circle">
@@ -59,23 +58,23 @@
                             </span>
                         </a>
                     </div>
-                </li>
-                <li>
+                </li> 
+                 <li>
                     <a class="nav-link text-center link" href="javascript:void(0);">
                         <b>See all e-Mails</b>
                         <i class="fa fa-angle-right"></i>
                     </a>
-                </li>
+                </li> 
             </ul>
         </div>
-    </li>
+    </li> -->
     <!-- ============================================================== -->
     <!-- End Messages -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
     <!-- Comment -->
     <!-- ============================================================== -->
-    <li class="nav-item dropdown border-right" ngbDropdown placement="bottom-right">
+    <!-- <li class="nav-item dropdown border-right" ngbDropdown placement="bottom-right">
         <a ngbDropdownToggle class="nav-link dropdown-toggle waves-effect waves-dark" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="mdi mdi-bell-outline font-22"></i>
             <span class="badge badge-pill badge-info noti">3</span>
@@ -93,7 +92,6 @@
                 </li>
                 <li>
                     <div class="message-center notifications" [perfectScrollbar]="config">
-                        <!-- Message -->
                         <a href="javascript:void(0)" class="message-item" *ngFor="let notification of notifications">
                             <span class="btn btn-circle {{notification.btn}}">
                                 <i class="{{notification.icon}}"></i>
@@ -114,7 +112,7 @@
                 </li>
             </ul>
         </div>
-    </li>
+    </li> -->
     <!-- ============================================================== -->
     <!-- End Comment -->
     <!-- ============================================================== -->
@@ -124,7 +122,7 @@
     <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
         <a ngbDropdownToggle class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img src="assets/images/users/2.jpg" alt="user" class="rounded-circle" width="40">
-            <span class="m-l-5 font-medium d-none d-sm-inline-block">Jonathan Doe <i class="mdi mdi-chevron-down"></i></span>
+            <span class="m-l-5 font-medium d-none d-sm-inline-block">{{userName}} <i class="mdi mdi-chevron-down"></i></span>
         </a>
         <div class="dropdown-menu dropdown-menu-right user-dd" ngbDropdownMenu>
             <span class="with-arrow">
@@ -135,19 +133,19 @@
                     <img src="assets/images/users/1.jpg" alt="user" class="img-circle" width="60">
                 </div>
                 <div class="m-l-10">
-                    <h4 class="m-b-0">Steave Jobs</h4>
-                    <p class=" m-b-0">varun@gmail.com</p>
+                    <h4 class="m-b-0">{{userName}}</h4>
+                    <p class=" m-b-0">{{email}}</p>
                 </div>
             </div>
             <a class="dropdown-item" [routerLink]="['/profile']">
-                <i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-            <a class="dropdown-item" href="javascript:void(0)">
-                <i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
-            <a class="dropdown-item" href="javascript:void(0)">
-                <i class="ti-email m-r-5 m-l-5"></i> Inbox</a>
+                <i class="ti-user m-r-5 m-l-5"></i> Edit Profile</a>
+             <a class="dropdown-item" [routerLink]="['/wallet']">
+                <i class="ti-wallet m-r-5 m-l-5"></i> My Wallet</a> 
+            <!-- <a class="dropdown-item" href="javascript:void(0)">
+                <i class="ti-email m-r-5 m-l-5"></i> Inbox</a> -->
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="javascript:void(0)">
-                <i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+            <a class="dropdown-item" [routerLink]="['/setting']">
+                <i class="ti-settings m-r-5 m-l-5"></i> Settings</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" (click)="logout()">
                 <i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>

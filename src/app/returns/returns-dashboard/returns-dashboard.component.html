@@ -16,7 +16,7 @@
                                 <th>Return Date</th>
                                 <th>Status</th>
                                 <th>Order ID</th>
-                                <th>User ID</th>
+                                <th>User Name</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,14 +24,14 @@
                                 <td>{{i+1}}</td>
                                 <td (click)="navigateToReturnProfile(data.returnId)">RET-{{data.returnId}}</td>
                                 <td>
-                                    <img [src]="data.orderProduct?.product?.mainImageUrl" alt="Product pic" width="80"> </td>
-                                <td>{{data.orderProduct?.product?.product?.productName}}</td>
-                                <td>{{data.orderProduct?.orderProductPrice}}</td>
+                                    <img [src]="data.mainImageUrl" alt="Product pic" width="80"> </td>
+                                <td>{{data.variantName}}</td>
+                                <td>{{data.orderProductPrice}}</td>
                                 <td>{{data.reason}}</td>
-                                <td>{{data.returnAuthorizeDate}}</td>
+                                <td>{{data.returnAuthorizeDate| date}}</td>
                                 <td>{{data.status}}</td>
-                                <td>ORD-{{data.order?.id}}</td>
-                                <td>CUS-{{data.user?.id}}</td>
+                                <td>ORD-{{data.orderProductId}}</td>
+                                <td>{{data.userName}}</td>
                             </tr>
                         </tbody>
                     </table>

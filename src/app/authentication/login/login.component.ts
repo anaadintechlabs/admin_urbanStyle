@@ -17,7 +17,8 @@ export class LoginComponent {
   ) {
     this.authForm = this._fb.group({
       'email': ['', Validators.required],
-      'password': ['', Validators.required]
+      'password': ['', Validators.required],
+      'userType':['SUPERADMIN']
       });
   }
 
