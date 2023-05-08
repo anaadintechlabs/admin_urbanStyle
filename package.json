@@ -24,7 +24,7 @@
     "@swimlane/ngx-charts": "^12.0.1",
     "@swimlane/ngx-datatable": "^15.0.2",
     "angular-calendar": "^0.27.12",
-    "angular-datatables": "^8.0.0",
+    "angular-datatables": "^15.0.1",
     "angular-file-uploader": "^5.0.2",
     "angular-notifier": "^4.1.1",
     "bootstrap": "^4.3.1",
@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.801.0",
-    "@angular/cli": "~8.1.0",
+    "@angular/cli": "~16.0.0",
     "@angular/compiler-cli": "^8.1.0",
     "@angular/language-service": "^8.1.0",
     "@types/chartist": "^0.9.46",
